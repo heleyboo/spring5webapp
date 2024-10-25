@@ -1,5 +1,7 @@
 package guru.springframework.spring5webapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -17,6 +19,7 @@ public class Author {
 
     // Declare a set of Book objects called books
     @ManyToMany(mappedBy = "authors")
+    @JsonIgnore
     private Set<Book> books = new HashSet<>();
 
     // Init the constructor with firstName, lastName, and books

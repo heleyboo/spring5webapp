@@ -1,5 +1,7 @@
 package guru.springframework.spring5webapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -22,6 +24,7 @@ public class Publisher {
 
     @OneToMany
     @JoinColumn(name = "publisher_id")
+    @JsonIgnore
     private Set<Book> books = new HashSet<>();
 
     // Init the constructor with name, address, city, state, and zip

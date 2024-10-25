@@ -1,16 +1,14 @@
 package guru.springframework.spring5webapp.controllers;
 
-import guru.springframework.spring5webapp.domain.Book;
 import guru.springframework.spring5webapp.repositories.BookRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Set;
-
-@RestController
+/**
+ * Created by jt on 12/24/19.
+ */
+@Controller
 public class BookController {
 
     private final BookRepository bookRepository;
@@ -20,7 +18,10 @@ public class BookController {
     }
 
     @RequestMapping("/books")
-    public List<Book> getBooks() {
-        return (List<Book>) this.bookRepository.findAll();
+    public String getBooks(Model model){
+
+        model.addAttribute("books", bookRepository.findAll());
+
+        return "books/list";
     }
 }
